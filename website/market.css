@@ -1,0 +1,145 @@
+/* Market transitions chapter. Reuses the story-slide layout from story.css with the CIM "market" purple accent. */
+.section-market .section-inner{padding:96px 8vw 75px 5.4vw;justify-content:center}
+.market-chapter{--market:#9a7bc0;--market-ink:#bca2de}
+.market-chapter .story-label,.market-chapter h2 em{color:var(--market-ink)}
+.market-chapter .story-nav .pips i.on{background:var(--market-ink)}.market-chapter .story-nav button[aria-current],.market-chapter .story-next{color:var(--market-ink)}
+.market-chapter h2{font-size:clamp(32px,2.9vw,46px);line-height:1.04;letter-spacing:-.045em;text-wrap:balance}
+.scene-enter :is(.mkt-left,.mkt-roadmap-head){animation:prod-rise .6s both}
+
+/* Slide 1: roadmap journey */
+.mkt-roadmap{display:grid;align-content:center;gap:26px}
+.mkt-journey{position:relative;display:grid;gap:18px}
+.mkt-track{position:absolute;left:0;right:0;top:9px;height:2px;background:repeating-linear-gradient(90deg,#3b3350 0 6px,transparent 6px 12px)}
+.mkt-track i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--market),var(--market-ink));transform-origin:left}
+.mkt-journey.is-on .mkt-track i{animation:mkt-grow 2.2s .1s cubic-bezier(.4,0,.2,1) backwards}
+.mkt-phases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mkt-phases li{position:relative;display:grid;align-content:start;gap:10px;padding-top:34px}
+.mkt-node{position:absolute;left:0;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ground);border:2px solid var(--market-ink);box-shadow:0 0 0 5px #9a7bc022}
+.mkt-journey.is-on .mkt-node{animation:mkt-node .5s calc(.3s + var(--i) * .5s) backwards}
+.mkt-phases li>:not(.mkt-node,.mkt-pill){padding:0 4px}
+.mkt-phases .mkt-pill{margin-left:4px}
+.mkt-icon{width:44px;height:44px;color:var(--market-ink)}.mkt-icon svg{width:100%;height:100%}
+.mkt-pill{justify-self:start;padding:3px 11px;border-radius:99px;background:#9a7bc033;border:1px solid #9a7bc088;font:12px var(--mono);color:var(--market-ink)}
+.mkt-phases h3{font-size:clamp(18px,1.55vw,23px);line-height:1.15;letter-spacing:-.02em}
+.mkt-phases p{font-size:clamp(15px,1.15vw,17px);line-height:1.42;color:var(--ink-2)}
+.mkt-who{justify-self:start;font:12px var(--mono);letter-spacing:.06em;color:var(--ink);border-bottom:1px solid var(--market)}
+.mkt-journey.is-on .mkt-phases li>:not(.mkt-node){animation:prod-rise .55s calc(.45s + var(--i) * .5s) backwards}
+.mkt-reach{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;font:11px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.mkt-reach div{height:10px;background:#141b27;border-radius:5px;overflow:hidden}
+.mkt-reach i{display:block;height:100%;background:linear-gradient(90deg,#9a7bc044,var(--market-ink));clip-path:polygon(0 35%,100% 0,100% 100%,0 65%);transform-origin:left}
+.mkt-journey.is-on .mkt-reach i{animation:mkt-grow 2.4s .6s cubic-bezier(.4,0,.2,1) backwards}
+.mkt-roadmap .story-refs{margin-top:0}
+
+/* Transition and synthesis slides: explanation steps left, diagram right */
+.mkt-transition,.mkt-synthesis{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:34px;align-items:center}
+.mkt-synthesis{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+.mkt-strip{list-style:none;display:flex;margin:2px 0 12px;padding:0;max-width:320px}
+.mkt-strip li{position:relative;flex:1;display:grid;gap:6px;font:11px var(--mono);color:#56667a}
+.mkt-strip li::before{content:'';position:absolute;left:0;right:0;top:5px;height:1px;background:#34465a}
+.mkt-strip i{position:relative;width:11px;height:11px;border-radius:50%;background:var(--ground);border:1px solid #4a5b70}
+.mkt-strip .done i{background:#9a7bc066;border-color:var(--market)}
+.mkt-strip .on{color:var(--market-ink)}.mkt-strip .on i{background:var(--market-ink);border-color:var(--market-ink);box-shadow:0 0 0 5px #9a7bc033}
+
+.mkt-steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:7px}
+.mkt-step{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:10px 14px;border:1px solid var(--line);background:#0d1520;transition:opacity .45s,border-color .45s,background .45s}
+.mkt-step-n{font:12px var(--mono);color:var(--market-ink);padding-top:4px}
+.mkt-step h3{font-size:19px;letter-spacing:-.02em}
+.mkt-step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.4,0,.15,1)}.mkt-step-body>div{overflow:hidden}
+.mkt-step.is-current .mkt-step-body{grid-template-rows:1fr}
+.mkt-step-body p{font-size:clamp(15px,1.2vw,17px);line-height:1.45;color:var(--ink-2);padding-top:6px}
+.mkt-step-body .citations{margin-left:4px;font-size:11px}
+.mkt-step:not(.is-on){background:transparent;border-style:dashed;border-color:#2a3746}
+.mkt-step:not(.is-on) h3{opacity:.28}
+.mkt-step.is-on:not(.is-current){opacity:.6}
+.mkt-step.is-current{border-color:#9a7bc088;background:linear-gradient(120deg,#171529,#0d1520)}
+
+.mkt-values{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font:11px var(--mono);letter-spacing:.06em;color:var(--muted);transition:opacity .5s}
+.mkt-values span{width:100%}
+.mkt-values b{font:500 13px var(--body);letter-spacing:0;color:var(--ink);padding:5px 10px;border:1px solid #9a7bc077;border-radius:99px;background:#9a7bc01c}
+.mkt-values:not(.is-on){opacity:0}
+.mkt-values.is-on b{animation:prod-rise .5s backwards}.mkt-values.is-on b+b{animation-delay:.15s}
+
+.mkt-stage{position:relative;height:100%;max-height:560px;min-height:0;display:grid;place-items:center;border:1px solid var(--line);overflow:hidden;background:#0a1019}
+.mkt-stage::before{content:'';position:absolute;inset:0;background:var(--photo) center/cover;opacity:.07;filter:grayscale(.5) blur(2px)}
+.mkt-stage::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#0a101900 30%,#0a1019d9 100%)}
+.scene-enter .mkt-stage::before{animation:mkt-photo 1.6s ease-out backwards}
+
+/* Diagram typography and layers */
+.mkt-svg{position:relative;z-index:1;width:100%;height:100%;max-height:100%}
+.mkt-svg text{font-family:var(--mono)}
+.mkt-svg .t-mono{font-size:12px;letter-spacing:.08em}
+.mkt-svg .t-big{font:600 18px var(--display);letter-spacing:-.01em}
+.mkt-svg .t-small{font:400 14px var(--body)}
+.mkt-svg .t-ad{font:800 30px var(--display);letter-spacing:-.03em}
+.mkt-layer{opacity:0;transition:opacity .35s;pointer-events:none}
+.mkt-layer.is-live{opacity:1;pointer-events:auto}
+.mkt-layer :is(.a-pop,.a-grow,.a-draw,.a-halo,.a-ripple,.a-wifi,.a-voice-out,.a-voice-in,.a-spin){transform-box:fill-box;transform-origin:center}
+.is-live .a-pop{animation:mkt-pop .5s var(--d,0s) cubic-bezier(.3,1.4,.5,1) backwards}
+.is-live .a-draw{stroke-dasharray:100;animation:prod-draw .8s var(--d,0s) ease-out backwards}
+.is-live .a-grow{transform-origin:left center;animation:mkt-grow .9s var(--d,0s) cubic-bezier(.3,.8,.3,1) backwards}
+.is-live .a-spin{animation:mkt-spin .9s linear infinite}
+.is-live .a-ripple{animation:mkt-ripple 2.7s var(--d,0s) ease-out infinite backwards}
+.is-live .a-travel{animation:mkt-travel 1.4s linear infinite}
+.is-live .a-halo{animation:mkt-halo 2.4s var(--d,0s) ease-in-out infinite}
+.is-live .a-pulse{animation:mkt-halo 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.is-live .a-bubble{animation:mkt-bubble 2.8s ease-in-out infinite}
+.is-live .a-cable{animation:mkt-fade 1.4s .3s forwards}
+.is-live .a-wifi{animation:mkt-wifi 2.1s var(--d,0s) ease-out infinite backwards}
+.is-live .a-voice-out{animation:mkt-voice-out 1.8s var(--d,0s) linear infinite backwards}
+/* Aware mode: 8 s cycle, quiet for the first half, aware for the second */
+.is-live .a-voice-in{animation:mkt-voice-in 8s var(--d,0s) linear infinite}
+.is-live .a-knob{animation:mkt-knob 8s ease-in-out infinite}
+.is-live .a-ring{animation:mkt-ring 8s ease-in-out infinite}
+.is-live .a-lbl-quiet{animation:mkt-lbl-q 8s infinite}.is-live .a-lbl-aware{animation:mkt-lbl-a 8s infinite}
+.a-lbl-aware{opacity:0}
+
+/* Synthesis: 1 technology ↔ market; 2 product → market trials; 3 market → science and the hub */
+.mkt-synthesis .mkt-steps{margin-top:22px}
+.mkt-cim-labels text{opacity:0;transition:opacity .5s .3s}
+.mkt-synthesis[data-build="0"] :is(.cim-node-science,.cim-node-product,.cim-hub-node,.cim-arc){opacity:.2}
+.mkt-synthesis[data-build="0"] .cim-spoke{opacity:.1}
+.mkt-synthesis[data-build="0"] :is(.cim-node-technology,.cim-node-market) circle{animation:cim-glow 1.8s ease-in-out infinite}
+.mkt-synthesis[data-build="1"] :is(.cim-node-science,.cim-node-technology,.cim-hub-node,.cim-arc-0,.cim-arc-1,.cim-arc-3){opacity:.25}
+.mkt-synthesis[data-build="1"] .cim-spoke{opacity:.1}
+.mkt-synthesis[data-build="1"] .cim-arc-2{stroke:#4dd0e1;stroke-width:4;animation:prod-draw .9s .2s backwards}
+.mkt-synthesis[data-build="1"] :is(.cim-node-product,.cim-node-market) circle{animation:cim-glow 1.8s ease-in-out infinite}
+.mkt-synthesis[data-build="1"] .lbl-1{opacity:1}
+.mkt-synthesis[data-build="2"] :is(.cim-arc-0,.cim-arc-1,.cim-arc-2){opacity:.45}
+.mkt-synthesis[data-build="2"] .cim-arc-3{stroke:var(--market-ink);stroke-width:4;animation:prod-draw .9s .2s backwards}
+.mkt-synthesis[data-build="2"] .cim-spoke{opacity:1;stroke-width:3;animation:prod-draw .8s .7s backwards}
+.mkt-synthesis[data-build="2"] :is(.cim-node-science,.cim-hub-node) circle{animation:cim-glow 1.8s ease-in-out infinite}
+.mkt-synthesis[data-build="2"] .lbl-2{opacity:1}
+
+@keyframes mkt-grow{from{transform:scaleX(0)}}
+@keyframes mkt-node{from{transform:scale(0);background:var(--market-ink)}}
+@keyframes mkt-pop{from{opacity:0;transform:scale(.7)}}
+@keyframes mkt-photo{from{opacity:0;transform:scale(1.08)}}
+@keyframes mkt-spin{to{transform:rotate(360deg)}}
+@keyframes mkt-ripple{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.9)}}
+@keyframes mkt-travel{from{transform:translateX(-140px)}to{transform:translateX(0)}}
+@keyframes mkt-halo{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes mkt-bubble{0%,100%{opacity:.35}50%{opacity:.9}}
+@keyframes mkt-fade{to{opacity:.1}}
+@keyframes mkt-wifi{0%{opacity:0;transform:translateX(0)}20%{opacity:1}100%{opacity:0;transform:translateX(240px)}}
+@keyframes mkt-voice-out{0%{opacity:0;transform:translateX(0)}20%{opacity:1}100%{opacity:.2;transform:translateX(-112px)}}
+@keyframes mkt-voice-in{0%,50%{opacity:0;transform:translateX(0)}55%{opacity:1}72%{opacity:0;transform:translateX(-50px)}73%,77%{opacity:0;transform:translateX(0)}80%{opacity:1}97%,100%{opacity:0;transform:translateX(-50px)}}
+@keyframes mkt-knob{0%,45%{transform:translateX(0)}50%,95%{transform:translateX(76px)}100%{transform:translateX(0)}}
+@keyframes mkt-ring{0%,45%{opacity:1}50%,95%{opacity:.25}100%{opacity:1}}
+@keyframes mkt-lbl-q{0%,47%{opacity:1}50%,97%{opacity:0}100%{opacity:1}}
+@keyframes mkt-lbl-a{0%,47%{opacity:0}50%,97%{opacity:1}100%{opacity:0}}
+
+@media(max-height:790px) and (min-width:701px){.market-chapter h2{font-size:32px}.mkt-step{padding:8px 12px}.mkt-step h3{font-size:17px}.mkt-step-body p{font-size:14px}.mkt-steps{margin-top:12px}.mkt-values{margin-top:10px}.mkt-phases p{font-size:14px}.mkt-roadmap{gap:18px}}
+@media(max-width:1100px) and (min-width:701px){.mkt-transition,.mkt-synthesis{grid-template-columns:1fr;gap:14px;align-content:start}.mkt-stage{height:300px}.mkt-phases{grid-template-columns:repeat(2,1fr);row-gap:22px}.mkt-track{display:none}.mkt-synthesis .conclusion-figure{max-height:260px}}
+@media(max-width:700px){
+ .section-market .section-inner{padding:76px 32px 67px 22px;justify-content:flex-start}
+ .market-chapter h2{font-size:28px}
+ .mkt-roadmap{gap:16px;align-content:start}
+ .mkt-track,.mkt-node{display:none}.mkt-phases{grid-template-columns:1fr;gap:12px}.mkt-phases li{padding-top:0;grid-template-columns:40px 1fr;column-gap:10px;row-gap:4px}
+ .mkt-icon{grid-row:span 2;width:36px;height:36px}.mkt-phases p,.mkt-who{grid-column:1/-1}.mkt-phases h3{font-size:17px}.mkt-phases p{font-size:14px}
+ .mkt-reach{grid-template-columns:1fr}.mkt-reach span:last-child{display:none}
+ .mkt-transition,.mkt-synthesis{grid-template-columns:1fr;gap:12px;align-items:start}
+ .mkt-stage{order:-1;height:210px}
+ .mkt-step h3{font-size:16px}.mkt-step-body p{font-size:14px}
+ .mkt-synthesis .conclusion-figure{order:-1;height:190px}
+}
+@media print{.mkt-layer{opacity:0}.mkt-layer[data-layer="0"]{opacity:1}.mkt-values{opacity:1!important}.mkt-step-body{grid-template-rows:1fr}}
