@@ -1,5 +1,7 @@
 # ET5218 CA1 — Bose QuietComfort
 
+> **Local review update, 15 September:** The contribution text below is preserved from GitHub. Its timing table and Product narration do not match the refined local website. Use [PRESENTATION_GUIDE.md](PRESENTATION_GUIDE.md) for current section ownership, speaking prompts and timing. In particular, the aviation/airline history belongs to Market, and the wireless model is QC35, not QC25. Do not use the old word-count table for recording planning.
+
 Updated 14 September 2026. Revised together with the website to remove repeated histories, strengthen the CIM connections, and match the actual slide order.
 
 ## Use and submission

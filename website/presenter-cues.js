@@ -1,0 +1,12 @@
+/* Cue text is a rehearsal aid, kept off the audience view by default. */
+(() => {
+  const button=document.createElement('button');button.className='cue-toggle';button.textContent='N / Cues';button.setAttribute('aria-expanded','false');
+  const panel=document.createElement('aside');panel.className='cue-panel';panel.hidden=true;panel.setAttribute('aria-label','Rehearsal cues');
+  document.querySelector('.masthead').insertBefore(button,document.querySelector('#help-open'));document.body.append(panel);
+  const fallback={science:'1:15 / Explain interference, local cancellation, fit and perception. End with the research requirements engineers must address.',technology:'1:25 / Explain sensing, controller and driver; feedforward/feedback; delay and stability. This is generic ANC engineering.',product:'1:20 / Patent and TriPort, then comfort/seal, size/acoustics and battery/playback. Market owns the aviation and airline history. The battery comparison is not evidence of a specific customer complaint or the first integrated-battery model.',conclusion:'0:20 / One finding and one board lesson. Make customer and product feedback change development decisions.',sources:'References for the team and audience. No spoken source list is needed.'};
+  const update=()=>{const match=location.hash.match(/^#([a-z]+)(?:-(\d+))?/);const id=match?.[1]||'opening',n=Number(match?.[2]||1)-1;const item=PresentationContent[id]?.[n];panel.replaceChildren();const h=document.createElement('h3'),p=document.createElement('p'),small=document.createElement('small');h.textContent=item?.tag||id.toUpperCase();p.textContent=item?.cue||fallback[id]||'';small.textContent='Rehearsal only · N closes cues · R replays this visual · Presenter controls the pace';panel.append(h,p,small);};
+  const toggle=()=>{panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));update();};
+  button.addEventListener('click',toggle);
+  addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||document.querySelector('dialog[open]')||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key.toLowerCase()==='n'){e.preventDefault();toggle();}if(e.key.toLowerCase()==='r'){const chapter=chapterAt(current);if(chapter){chapter.show(chapterStep);const scene=sectionEls[current].querySelector('.ref-scene:not([hidden])');if(scene){scene.classList.remove('ref-enter');void scene.offsetWidth;scene.classList.add('ref-enter');}}}});
+  new MutationObserver(update).observe(document.querySelector('#chapter-label'),{childList:true});update();
+})();

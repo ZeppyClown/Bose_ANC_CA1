@@ -5,7 +5,7 @@ window.CimFigure = (() => {
   const nodes = [
     {key: 'science', angle: 180, color: '#e0913a', ink: '#e0913a', full: ['Scientific', 'exploration'], short: 'Science'},
     {key: 'technology', angle: 270, color: '#9bb84a', ink: '#b8cf7b', full: ['Technological', 'research'], short: 'Technology'},
-    {key: 'product', angle: 0, color: '#d8c93f', ink: '#d8c93f', full: ['Product', 'creation'], short: 'Product'},
+    {key: 'product', angle: 0, color: '#d8c93f', ink: '#d8c93f', full: ['Product', 'development'], short: 'Product'},
     {key: 'market', angle: 90, color: '#9a7bc0', ink: '#bca2de', full: ['Market', 'transitions'], short: 'Market'}
   ];
   const point = (angle, radius = R) => {
