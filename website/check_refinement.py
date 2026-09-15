@@ -1,8 +1,9 @@
 """Lightweight runtime checks; no visual design review or screenshots."""
 from playwright.sync_api import sync_playwright
+import os
 
-URL='http://127.0.0.1:8766/website/'
-COUNTS={'opening':3,'science':6,'technology':8,'product':6,'market':4,'cim':5,'conclusion':2,'sources':1}
+URL=os.environ.get('PRESENTATION_URL','http://127.0.0.1:8766/website/')
+COUNTS={'opening':3,'science':6,'technology':8,'product':6,'market':4,'cim':5,'conclusion':2,'thank-you':1,'sources':1}
 with sync_playwright() as p:
     browser=p.chromium.launch()
     page=browser.new_page(viewport={'width':1920,'height':1080},reduced_motion='reduce')
@@ -45,5 +46,5 @@ with sync_playwright() as p:
     assert frame.locator('.section.active').count()==1
     assert page.locator('figure').bounding_box()['x']>1500
     assert not errors,errors
-    print('PASS: 35 states, all chapter content/assets, forward/back keyboard navigation, cues, replay smoke check, mobile width, portrait layout, no JS errors.')
+    print(f'PASS: {len(states)} states, all chapter content/assets, forward/back keyboard navigation, cues, replay smoke check, mobile width, portrait layout, no JS errors.')
     browser.close()

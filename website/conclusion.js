@@ -29,7 +29,7 @@ window.ConclusionChapter = (() => {
 
   function show(index) {
     const root = document.querySelector('.conclusion-chapter'); if (!root) return;
-    StoryKit.show(root, stops, index, 'Next: thank you and sources');
+    StoryKit.show(root, stops, index, 'Next: thank you');
   }
 
   return {
