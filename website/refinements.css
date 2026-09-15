@@ -168,6 +168,74 @@
 .sources-slide .source-item p{font-size:calc(var(--u)*.9);line-height:1.3;margin-top:calc(var(--u)*.25)}
 .sources-slide .source-item>span,.sources-slide .source-item i{font-size:calc(var(--u)*.85)}
 .sources-slide .scope{font-size:calc(var(--u)*.8);line-height:1.4;margin-top:calc(var(--u)*.8);max-width:none}
+/* Projector legibility: technology captions and science diagram labels readable from the back of a room. */
+.tech-chapter{grid-template-rows:calc(var(--u)*1.4) minmax(0,1fr) calc(var(--u)*9.4) calc(var(--u)*2.8)}
+.tech-copy h2{font-size:calc(var(--u)*2.7)}
+.tech-step-label{font-size:calc(var(--u)*.95);margin-bottom:calc(var(--u)*.5)}
+.tech-explanation{font-size:calc(var(--u)*1.4)}
+.tech-evidence,.tech-evidence .citations{font-size:calc(var(--u)*.8)}
+.sci-finding svg{height:calc(var(--u)*15)}
+.sci-water text{font-size:34px}
+.sci-finding svg:not(.sci-water) text{font-size:22px}
+/* Imported Victor chapters keep the current slide frame and scale within it. */
+.intro-story{grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:calc(var(--u)*3);align-content:normal}
+.intro-story .story-copy h2{font-size:calc(var(--u)*3.2)}
+.intro-welcome .hero-grid{gap:calc(var(--u)*3)}
+.intro-welcome .hero-title-long{font-size:calc(var(--u)*4.1)}
+.intro-welcome .hero-description{font-size:calc(var(--u)*1.5);margin-top:calc(var(--u)*1.5)}
+.intro-welcome .hero-art{width:calc(var(--u)*30);max-width:100%}
+.intro-welcome .team{margin-top:calc(var(--u)*1.7)}
+.intro-welcome .eyebrow{font-size:calc(var(--u)*.95);margin-bottom:calc(var(--u)*1.1)}
+.intro-welcome .team-names{font-size:calc(var(--u)*1.05)!important}
+.intro-welcome .team>span{font-size:calc(var(--u)*.8)}
+.story-panels{max-height:none;gap:calc(var(--u)*1.1)}
+.intro-argument .story-panels{grid-template-rows:minmax(0,1.5fr) minmax(0,1fr)}
+.story-cim{max-height:none;height:100%;aspect-ratio:auto}
+.story-tag{font-size:calc(var(--u)*.95)}
+.story-tag b{font-size:calc(var(--u)*1.8)}
+.story-flight{grid-template-columns:minmax(0,.65fr) minmax(0,1fr);gap:calc(var(--u)*1.5)}
+.bose-portrait{max-height:calc(var(--u)*17);min-height:0}
+.story-lead-big{font-size:calc(var(--u)*2.1);margin-top:calc(var(--u)*1.2)}
+.question-text{font-size:calc(var(--u)*2.1);margin-top:calc(var(--u)*1)}
+.story-case{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:calc(var(--u)*1.5)}
+.bose-logo{width:calc(var(--u)*10);margin-bottom:calc(var(--u)*.6)}
+.case-stat{gap:calc(var(--u)*1)}
+.case-stat b{font-size:calc(var(--u)*3.6)}
+.case-stat span{font-size:calc(var(--u)*1.2)}
+.case-stat small{font-size:calc(var(--u)*.9)}
+.case-line b{font-size:calc(var(--u)*1.8)}
+.case-line span{font-size:calc(var(--u)*1.3)}
+.case-line small{font-size:calc(var(--u)*.95)}
+.sci-scene .sci-stage{min-height:0;max-height:none}
+.sci-portrait{gap:calc(var(--u)*1)}
+.sci-name{font-size:calc(var(--u)*2.1)}
+.sci-sub{font-size:calc(var(--u)*1.3)}
+.sci-portrait figcaption,.sci-sketch figcaption,.sci-patent figcaption,.bose-portrait figcaption{font-size:calc(var(--u)*.75)}
+.sci-interference{gap:calc(var(--u)*.7)}
+.sci-legend{font-size:calc(var(--u)*.9);gap:calc(var(--u)*.5) calc(var(--u)*1.2)}
+.sci-sketch{grid-template-columns:calc(var(--u)*8.3) 1fr;gap:calc(var(--u)*.8)}
+.sci-sketch img{width:calc(var(--u)*8.3)}
+.sci-result{font-size:calc(var(--u)*2.6)}
+.sci-question .question-text{font-size:calc(var(--u)*2.6)}
+.sci-ready{gap:calc(var(--u)*1.4)}
+.ready-row span{font-size:calc(var(--u)*1.6)}
+.ready-row b{font-size:calc(var(--u)*2.1)}
+.sci-line{min-height:0;margin:0 calc(var(--u)*1.4)}
+.sci-year b{font-size:calc(var(--u)*1.2)}
+.sci-year em{font-size:calc(var(--u)*1.1)}
+.sci-year small{font-size:calc(var(--u)*.75)}
+.sci-axis{font-size:calc(var(--u)*.75)}
+.sci-span{font-size:calc(var(--u)*2)}
+.prod-scene-consumer .prod-art{height:calc(var(--u)*7)}
+.prod-scene-consumer .prod-specs li{font-size:calc(var(--u)*1.1)}
+.conclusion-scene{grid-template-columns:1.25fr 1fr}
+.conclusion-scene .story-copy h2{font-size:calc(var(--u)*3.8)}
+.conclusion-points{margin-top:calc(var(--u)*1);gap:calc(var(--u)*.4)}
+.conclusion-point{padding:calc(var(--u)*.55) calc(var(--u)*.9)}
+.conclusion-point h3{font-size:calc(var(--u)*1.35)}
+.conclusion-point .point-body p{font-size:calc(var(--u)*1.3)}
+.conclusion-point .point-path{font-size:calc(var(--u)*.75)!important;gap:calc(var(--u)*.3)}
+.conclusion-point .point-path span{padding:calc(var(--u)*.15) calc(var(--u)*.35)}
 }
 @media screen and (min-width:701px) and (max-width:1100px){
  .section .section-inner{padding:calc(var(--u)*6.4) calc(var(--u)*5.6) calc(var(--u)*4.4)}

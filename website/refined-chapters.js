@@ -42,7 +42,6 @@ window.RefinedChapter = (id, next) => {
     announce:i=>`${id}, ${entries[i].tag}`
   };
 };
-window.IntroChapter=RefinedChapter('opening','Science');
 window.MarketChapter=RefinedChapter('market','Entrepreneurship');
 // One SVG instance stays mounted for all five explanations; only its focus changes.
 window.EntrepreneurshipChapter = (() => {

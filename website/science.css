@@ -121,15 +121,3 @@
  .sci-year.above b{bottom:40px}.sci-year.above em{bottom:20px}.sci-year.below b{top:16px}.sci-year.below em{top:36px}
 }
 @media(prefers-reduced-motion:reduce){.science-chapter *{animation:none!important;transition:none!important}}
-
-/* Revised research scenes: one illustration and one finding, then two concise CIM cards. */
-.sci-principle .sci-stage,.sci-limits .sci-stage{grid-template-rows:minmax(0,1.5fr) minmax(0,1fr)}
-.sci-inquiry .sci-stage{grid-template-rows:1fr 1fr}
-.sci-finding{display:flex;flex-direction:column;justify-content:center}
-.sci-finding svg{height:clamp(110px,19vh,180px);flex-shrink:1;min-height:80px;margin:12px 0}
-.sci-finding .story-tag{font-size:12px;line-height:1.5}
-.sci-finding .story-lead{font-size:clamp(17px,1.45vw,21px)}
-.sci-finding .question-text{text-align:left;font-size:clamp(26px,2.5vw,38px)}
-.sci-finding .citations{margin:10px 0 0}
-@media(max-width:1100px){.sci-principle .sci-stage,.sci-limits .sci-stage,.sci-inquiry .sci-stage{min-height:500px}}
-@media(max-width:700px){.sci-principle .sci-stage,.sci-limits .sci-stage,.sci-inquiry .sci-stage{min-height:0;grid-template-rows:auto}.sci-finding svg{height:140px}.sci-finding{min-height:160px}}

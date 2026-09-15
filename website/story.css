@@ -94,10 +94,18 @@
 .conclusion-point.is-current{border-color:#4dd0e166}
 .conclusion-figure{height:100%;max-height:520px;min-height:0;display:grid;align-items:center}
 .cim-people text{opacity:0}
-.conclusion-scene .cim-spoke{opacity:1;stroke-width:3}
-.conclusion-scene[data-build="1"] .cim-hub-node circle{fill-opacity:.4;stroke-width:2}
-.case-footnote{grid-column:1/-1;font-size:12px;line-height:1.4;color:var(--ink-2)}
-.story-case{row-gap:8px}
+/* 1: everything cycles; 2: sponsor + science/technology; 3: product; 4: market; 5: hub and spokes */
+.conclusion-scene[data-build="0"] .cim-arc{animation:cim-cycle 4s linear infinite}
+.conclusion-scene[data-build="0"] .cim-arc-1{animation-delay:1s}.conclusion-scene[data-build="0"] .cim-arc-2{animation-delay:2s}.conclusion-scene[data-build="0"] .cim-arc-3{animation-delay:3s}
+.conclusion-scene[data-build="1"] :is(.cim-node-product,.cim-node-market,.cim-arc),
+.conclusion-scene[data-build="2"] :is(.cim-node-science,.cim-node-technology,.cim-node-market,.cim-hub-node,.cim-arc),
+.conclusion-scene[data-build="3"] :is(.cim-node-science,.cim-node-technology,.cim-node-product,.cim-hub-node,.cim-arc){opacity:.2}
+.conclusion-scene:is([data-build="1"],[data-build="2"],[data-build="3"]) .cim-spoke{opacity:.12}
+.conclusion-scene[data-build="1"] .cim-people text{opacity:1}
+.conclusion-scene[data-build="1"] .cim-people text:nth-child(2){transition-delay:.25s}.conclusion-scene[data-build="1"] .cim-people text:nth-child(3){transition-delay:.5s}
+.conclusion-scene[data-build="2"] .cim-node-product circle,.conclusion-scene[data-build="3"] .cim-node-market circle,.conclusion-scene[data-build="4"] .cim-hub-node circle{animation:cim-glow 1.8s ease-in-out infinite}
+.conclusion-scene[data-build="4"] .cim-spoke{opacity:1;stroke-width:3;animation:prod-draw .8s .2s backwards}
+.conclusion-scene[data-build="4"] .cim-hub-node circle{fill-opacity:.4}
 
 /* Bottom navigation */
 .story-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:10px;border-top:1px solid #27384a}

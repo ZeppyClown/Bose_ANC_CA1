@@ -1,4 +1,4 @@
-/* Product creation: two engineering slides, built one click (or gesture) at a time.
+/* Product creation: four script slides, built one click (or gesture) at a time.
    A to-scale 1984–2016 timeline stays on screen while the scenes change. */
 window.ProductChapter = (() => {
   const FIRST_YEAR = 1983, LAST_YEAR = 2017;
@@ -59,15 +59,25 @@ window.ProductChapter = (() => {
   const batt = (hours, label) => `<div class="prod-batt"><span>${label}</span><i style="--w:${hours / 80 * 100}%"></i><b>${hours} h</b></div>`;
 
   const slides = [
-    {id:'engineering',short:'Engineering',label:'Making the consumer form possible',title:'Engineer the<br><em>whole experience.</em>',caption:'Integrated engineering cycle · Technology ↔ Product. Product requirements shape technical work.',cards:[
-      {year:1984,tag:'PATENT',label:'1984 · Combined requirements',title:'One engineering problem',text:'Bose and Carter’s Headphoning patent brings noise reduction, consistent audio response and comfort together.',art:art.patent,refs:[8]},
-      {year:2000,tag:'TRIPORT',label:'2000 · Consumer form',title:'Acoustics unlocks the form',text:'Gauger credits Roman Sapiejewski and Bob Maresca’s TriPort work with enabling the consumer model. Smaller packaging had to preserve useful acoustic performance.',art:art.headsetX,refs:[9]}
+    {id:'pilots', short:'Pilots', label:'Proving it with pilots', title:'Proven in the<br><em>loudest seat.</em>', caption:'A patent set the demands. Pilots tested the answer.', cards:[
+      {year:1984, tag:'PATENT', label:'1984 · Headphoning patent', title:'<i>Headphoning</i> patent', text:'Bose and Carter’s patent addresses noise reduction, consistent audio response and comfort together.', art:art.patent, refs:[8]},
+      {year:1986, tag:'FIELD TEST', label:'1986 · Voyager flight', title:'Voyager flight', text:'Prototype ANC headsets fly on the first non-stop, unrefueled flight around the world. The pilots liked them.', art:art.voyager, refs:[9,10]},
+      {year:1989, tag:'LAUNCH', label:'1989 · Aviation Headset', title:'Aviation Headset', text:'Noise reduction, communication and comfort for pilots. Bose calls it the first commercial active noise-reducing headset.', art:art.aviation, refs:[10,11]}
     ]},
-    {id:'design',short:'Design choices',label:'Requirements change the design',title:'Performance<br><em>people can wear.</em>',caption:'QC25 illustrates the trade-offs: performance must be wearable. A usable product still needs customers who recognise its value.',intro:'The product balance',choices:[
-      {title:'Comfort and sealing',label:'Comfort and sealing',text:'Cushions and headband support long wear. A comfortable fit must still provide passive isolation; seal and acoustics cannot be designed separately.'},
-      {title:'Portability and acoustic space',label:'Portability and acoustic space',text:'Smaller earcups improve portability but constrain acoustic space. Integrated engineering cycle: product requirements guide acoustics; acoustic improvements enable a practical product.'},
-      {title:'Power without the external box',label:'Battery and continued playback',text:'QC1 used a separate box with two AAA cells. QC25 houses one AAA in the earcup for up to 35 hours; music still plays after battery depletion.',path:['Packaging requirement','Technical integration','Travel usability']}
-    ],refs:[8,9,12,13,15]}
+    {id:'cabin', short:'Cabin', label:'From cockpit to cabin', title:'Lighter for pilots.<br><em>Tried by passengers.</em>', caption:'Better for pilots first, then a trial with airline passengers.', cards:[
+      {year:1998, tag:'AVIATION', label:'1998 · Aviation Headset X', title:'Aviation Headset X', text:'Big advances in noise reduction and comfort, in a smaller, lighter headset for pilots.', art:art.headsetX, refs:[11]},
+      {year:1999, tag:'AMERICAN AIRLINES', label:'1999 · American Airlines', title:'An in-flight trial', text:'First- and business-class passengers try noise-cancelling headphones. The response is so positive that Bose starts selling directly to consumers.', art:art.cabin, refs:[11]}
+    ]},
+    {id:'consumer', short:'Consumer', label:'The consumer line', title:'Quiet you<br><em>can buy.</em>', caption:'Twenty-two years after the 1978 flight, a consumer product line begins.', cards:[
+      {year:2000, tag:'QC1', label:'2000 · QuietComfort (QC1)', title:'QuietComfort, the first model', art:art.qc1, refs:[12], specs:['Separate external control box','2 × AAA batteries','Replaceable ear cushions','Travel accessories'], batt:batt(80, 'BATTERY')},
+      {year:2014, tag:'QC25', label:'2014 · QuietComfort 25', title:'QC25, the most advanced yet', art:art.qc25, refs:[13,14], specs:['1 × AAA inside the earcup','TPE bumpers, cast-zinc pivots','Protein-leather cushions','Music still plays when the battery dies'], batt:batt(35, 'BATTERY')}
+    ]},
+    {id:'design', short:'QC25 design', label:'Designing QC25', title:'Performance<br><em>you can wear.</em>', caption:'To make QC25 commercially viable, Bose balanced performance with usability.', intro:'The QC25 balance', choices:[
+      {title:'Comfort for long wear', label:'Choice 1 · comfort', text:'Soft protein-leather cushions and an engineered headband: passive isolation balanced with physical comfort.'},
+      {title:'Less earcup bulk', label:'Choice 2 · earcup size', text:'Portable enough for personal travel, while keeping the acoustic volume the driver needs.'},
+      {title:'The battery moves inside', label:'Choice 3 · battery', text:'The external box goes. One AAA sits in the earcup, and QC35 later becomes rechargeable.', path:['QC1 · external box','QC25 · 1 × AAA in earcup','QC35 · rechargeable']},
+      {title:'Wired to wireless', label:'Choice 4 · wireless', text:'As demand moved to mobile, the line went from wired QC25 to Bluetooth QC35 with smartphone app integration.', path:['QC25 · wired','QC35 · Bluetooth + app']}
+    ], refs:[13,15,18]}
   ];
 
   const stops = slides.flatMap((s, si) => {
@@ -76,10 +86,9 @@ window.ProductChapter = (() => {
   });
   const stopOf = (slide, build) => stops.findIndex(s => s.slide === slide && s.build === build);
   const years = [
-    {year:1984,tag:'PATENT',stop:0,slides:[0]},
-    {year:2000,tag:'CONSUMER FORM',stop:1,slides:[0]},
-    {year:2014,tag:'QC25',stop:2,slides:[1]}
-  ].map((y,i)=>({...y,side:i%2?'below':'above',x:(y.year-FIRST_YEAR)/(LAST_YEAR-FIRST_YEAR)*100}));
+    ...slides.slice(0, 3).flatMap((s, si) => s.cards.map((c, ci) => ({year: c.year, tag: ['QC1', 'QC25'].includes(c.tag) ? c.tag : '', stop: stopOf(si, ci), slides: c.year === 2014 ? [si, 3] : [si]}))),
+    {year: 2016, tag: 'QC35', stop: stopOf(3, 3), slides: [3]}
+  ].map((y, i) => ({...y, side: i % 2 ? 'below' : 'above', x: (y.year - FIRST_YEAR) / (LAST_YEAR - FIRST_YEAR) * 100}));
 
   const cardHtml = (c, i, cite) => `<article class="prod-card" data-build="${i}">
       <p class="prod-card-year">${c.year}<small>${c.tag}</small></p>
@@ -91,7 +100,7 @@ window.ProductChapter = (() => {
       <p class="prod-refs">${cite(...c.refs)}</p>
     </article>`;
 
-  const designFigure = `<svg class="design-svg" viewBox="0 0 440 330" role="img" aria-label="Schematic QC25 headphones. Numbered markers point to the cushions and headband, the earcup, the battery inside the earcup, and the battery housed in the earcup.">
+  const designFigure = `<svg class="design-svg" viewBox="0 0 440 330" role="img" aria-label="Schematic QC25 headphones. Numbered markers point to the cushions and headband, the earcup, the battery inside the earcup, and the wireless connection added in QC35.">
       <g class="part part-cable"><path d="M118 278 C118 312 64 300 40 322" pathLength="100" fill="none" stroke="#6f8196" stroke-width="3"/></g>
       <g class="part part-band"><path d="M120 170 V120 C120 18 320 18 320 120 V170" fill="none" stroke="#56677c" stroke-width="16" stroke-linecap="round"/><path d="M136 118 C138 46 302 46 304 118" fill="none" stroke="#2f3d4f" stroke-width="8"/></g>
       <g class="part-dims"><rect x="70" y="136" width="100" height="156" rx="46" fill="none" stroke="#56677c" stroke-dasharray="4 5"/><path d="M52 150 V278 M46 150 H58 M46 278 H58" stroke="#d8c93f" stroke-width="1.5" fill="none"/><text x="40" y="214" transform="rotate(-90 40 214)" text-anchor="middle" fill="#d8c93f" font-size="10" letter-spacing="1">LESS BULK</text></g>
@@ -101,7 +110,7 @@ window.ProductChapter = (() => {
       <g class="part part-battery"><rect x="300" y="176" width="40" height="76" rx="10" fill="#0a1119" stroke="#d8c93f" stroke-dasharray="4 3"/><rect x="312" y="188" width="16" height="52" rx="3" fill="none" stroke="#ffb340" stroke-width="2"/><rect x="316" y="184" width="8" height="4" fill="#ffb340"/></g>
       <g class="part-box"><rect x="184" y="270" width="72" height="40" rx="5" fill="#121c29" stroke="#6f8196" stroke-dasharray="4 3"/><text x="220" y="294" text-anchor="middle" fill="#8b9bb3" font-size="10">QC1 BOX</text></g>
       <g class="part part-bt"><path class="wave" d="M370 196 q10 18 0 36" fill="none" stroke="#4dd0e1" stroke-width="2"/><path class="wave wave-2" d="M382 186 q18 28 0 56" fill="none" stroke="#4dd0e1" stroke-width="2"/><rect x="398" y="184" width="30" height="58" rx="5" fill="#0d1a28" stroke="#4dd0e1" stroke-width="1.5"/><path d="M405 198 H421 M405 206 H417 M405 214 H421" stroke="#4dd0e1" stroke-width="2"/><text x="432" y="264" text-anchor="end" fill="#4dd0e1" font-size="10">QC35 · 2016</text></g>
-      ${[[220, 26], [62, 138], [352, 164]].map(([x, y], i) => `<g class="badge badge-${i + 1}" transform="translate(${x} ${y})"><circle r="13" fill="#070b12" stroke="#d8c93f" stroke-width="1.5"/><text y="4" text-anchor="middle" fill="#d8c93f" font-size="11">${pad(i + 1)}</text></g>`).join('')}
+      ${[[220, 26], [62, 138], [352, 164], [392, 164]].map(([x, y], i) => `<g class="badge badge-${i + 1}" transform="translate(${x} ${y})"><circle r="13" fill="#070b12" stroke="#d8c93f" stroke-width="1.5"/><text y="4" text-anchor="middle" fill="#d8c93f" font-size="11">${pad(i + 1)}</text></g>`).join('')}
     </svg>`;
 
   const designHtml = s => `<div class="prod-design">
@@ -115,8 +124,8 @@ window.ProductChapter = (() => {
       <div class="prod-rail" aria-hidden="true"><div class="prod-rail-track"><i class="prod-rail-fill"></i></div>${years.map(y => `<span class="prod-year ${y.side}" style="--x:${y.x}%"><i></i><span>${y.year}${y.tag ? `<small> ${y.tag}</small>` : ''}</span></span>`).join('')}</div>
       <div class="prod-stage" data-click-advance>
         ${slides.map((s, si) => `<article class="prod-scene prod-scene-${s.id}" data-scene="${si}" ${si ? 'hidden inert' : ''} aria-label="Slide ${si + 1}: ${s.label}">
-          <div class="prod-copy"><p class="prod-label">${pad(si + 1)} / ${pad(slides.length)} <span>${s.label}</span></p><h2>${s.title}</h2><p class="prod-caption">${s.caption}</p>
-          ${s.refs ? `<p class="prod-scope">Design implications are our interpretation of documented features and engineering testimony. ${cite(...s.refs)}</p>` : ''}</div>
+          <div class="prod-copy"><p class="prod-label">${pad(si + 1)} / 04 <span>${s.label}</span></p><h2>${s.title}</h2><p class="prod-caption">${s.caption}</p>
+          ${s.refs ? `<p class="prod-scope">Design rationale is our reading of Bose specifications and independent reviews. Factory processes, cost and yield are not verified. ${cite(...s.refs)}</p>` : ''}</div>
           ${s.cards ? `<div class="prod-cards" style="--n:${s.cards.length}">${s.cards.map((c, i) => cardHtml(c, i, cite)).join('')}</div>` : designHtml(s)}
         </article>`).join('')}
       </div>

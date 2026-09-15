@@ -11,7 +11,7 @@ window.IntroChapter = (() => {
 
   const caseLine = [
     {year: 2000, name: 'QC1', note: 'Consumer launch'},
-    {year: 2014, name: 'QC25', note: '$299.95 · Bose’s top seller¹'},
+    {year: 2014, name: 'QC25', note: '$299.95 · top seller'},
     {year: 2016, name: 'QC35', note: '$349.95 · Bluetooth'}
   ];
 
@@ -19,15 +19,15 @@ window.IntroChapter = (() => {
     <article class="story-panel story-flight" data-build="0">
       <figure class="bose-portrait"><img src="amar-bose.jpg" width="368" height="368" alt="Amar Bose, founder of Bose Corporation, seated and smiling"><figcaption>Amar Bose · Photo: MIT</figcaption></figure>
       <div class="flight-copy"><p class="story-tag"><b>1978</b> THE FLIGHT</p>
-        <p class="story-lead story-lead-big">Aircraft cabin noise spoiled the music. Amar Bose turned the listening problem into a research programme.</p></div>
+        <p class="story-lead story-lead-big">Amar Bose was dissatisfied with airline headphones.</p></div>
     </article>
-    <article class="story-panel story-question" data-build="1"><p class="story-tag">THE COMMERCIAL QUESTION</p><p class="question-text">How do we make noise cancellation <mark style="--i:0">comfortable to wear</mark>, <mark style="--i:1">easy to experience</mark> and <mark style="--i:2">worth paying for</mark>?</p></article>`;
+    <article class="story-panel story-question" data-build="1"><p class="story-tag">THE COMMERCIAL QUESTION</p><p class="question-text">How does an acoustic principle discovered in a lab become a product that ordinary people are willing to <mark style="--i:0">wear</mark>, <mark style="--i:1">trust</mark> and <mark style="--i:2">pay a premium for</mark>?</p></article>`;
 
   const argumentPanels = cim => `
-    <article class="story-panel story-argument" data-build="0"><p class="story-tag">OUR ARGUMENT · ENTREPRENEURSHIP CONNECTS DECISIONS & FEEDBACK</p><div class="story-cim">${cim}</div></article>
+    <article class="story-panel story-argument" data-build="0"><p class="story-tag">OUR ARGUMENT</p><div class="story-cim">${cim}</div></article>
     <article class="story-panel story-case" data-build="1">
-      <div class="case-head"><img class="bose-logo" src="bose-logo.svg" width="215" height="27" alt="Bose"><p class="story-tag">THE CASE WE EXAMINE</p><p class="case-stat"><b>#1</b><span>US online headphone dollar share<small>2015 panel · Bose brand-wide<br>13% · Beats 12%</small></span></p></div>
-      <ol class="case-line">${caseLine.map((c, i) => `<li style="--i:${i}"><i></i><b>${c.year}</b><span>${c.name}</span><small>${c.note}</small></li>`).join('')}</ol><p class="case-footnote">¹ QC25: Bose’s top-selling headphone in the 2015 US online panel. Main case: 2000–2016; QC45 (2021) is a continuation.</p>
+      <div class="case-head"><img class="bose-logo" src="bose-logo.svg" width="215" height="27" alt="Bose"><p class="story-tag">THE CASE WE EXAMINE</p><p class="case-stat"><b>#1</b><span>US online headphone sales, 2015<small>13% share · Beats 12%</small></span></p></div>
+      <ol class="case-line">${caseLine.map((c, i) => `<li style="--i:${i}"><i></i><b>${c.year}</b><span>${c.name}</span><small>${c.note}</small></li>`).join('')}</ol>
     </article>`;
 
   function html(cite, heroHtml) {
@@ -36,7 +36,7 @@ window.IntroChapter = (() => {
       <div class="story-stage" data-click-advance>
         <article class="story-scene intro-welcome" data-scene="0" aria-label="Welcome">${heroHtml}</article>
         <article class="story-scene intro-story intro-origin" data-scene="1" hidden inert aria-label="The flight and the commercial question">
-          <div class="story-copy"><p class="story-label">02 / 03 <span>Introduction</span></p><h2>From a noisy cabin<br><em>to a global product.</em></h2><p class="story-refs">${cite(7, 19)}</p></div>
+          <div class="story-copy"><p class="story-label">02 / 03 <span>Introduction</span></p><h2>From a noisy cockpit<br><em>to a global product.</em></h2><p class="story-refs">${cite(7, 19)}</p></div>
           <div class="story-panels">${originPanels}</div>
         </article>
         <article class="story-scene intro-story intro-argument" data-scene="2" hidden inert aria-label="Our argument and the case">
