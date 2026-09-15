@@ -54,8 +54,7 @@ const sections = [
  {id:'technology',name:'Technological research',chapter:'02 / MAKING THE PRINCIPLE WORK',speaker:'C',html:TechnologyChapter.html(cite)},
  {id:'product',name:'Product creation',chapter:'03 / A PRODUCT PEOPLE WILL WEAR',speaker:'D',html:ProductChapter.html(cite)},
  {id:'market',name:'Market transitions',chapter:'04 / MARKET TRANSITIONS',speaker:'E',html:MarketChapter.html(cite)},
- {id:'cim',name:'Entrepreneurship: people and decisions',chapter:'05 / WHO CONNECTED THE WORK?',speaker:'F',html:EntrepreneurshipChapter.html(cite)},
- {id:'cycle',name:'Entrepreneurship: feedback',chapter:'06 / HOW THE FINDINGS CONNECT',speaker:'F',html:CycleChapter.html(cite)},
+ {id:'cim',name:'Entrepreneurship: connected decisions',chapter:'05 / WHO CONNECTED THE WORK?',speaker:'F',html:EntrepreneurshipChapter.html(cite)},
  {id:'conclusion',name:'Conclusion',chapter:'07 / A COMBINATION, NOT A SINGLE CAUSE',speaker:'A',html:ConclusionChapter.html(cite)},
  {id:'sources',name:'Thank you and sources',chapter:'08 / THANK YOU',speaker:'A',html:`<div class="closing-heading"><p class="eyebrow reveal">FROM AN ACOUSTIC PRINCIPLE TO A CONSUMER PRODUCT</p><h2 class="reveal">Make the benefit real.<br><em>Let the learning travel.</em></h2><p class="intro reveal">Sustained research. Practical engineering. Customer experience. Market access.</p><p class="closing-thanks reveal">Thank you. <span>Questions & discussion</span></p></div><div class="source-heading reveal"><span>THE EVIDENCE REGISTER</span><span>21 SOURCES / NUMBERING MATCHES THE RESEARCH REPORT</span></div><div class="sources-grid">${sources.map(([id,title,detail,url])=>`<a class="source-item" href="${url}" target="_blank" rel="noopener noreferrer"><span>${String(id).padStart(2,'0')}</span><div><b>${title}</b><p>${detail}</p></div><i>↗</i></a>`).join('')}</div><p class="scope">Source register transcribed from the supplied research report (10 September 2026). Manufacturer claims, first-person testimony and independent evidence are distinguished. External pages may change. The lecture diagram is an additional course reference.</p>`}
 ];
@@ -72,13 +71,14 @@ rail.innerHTML = sections.map((s,i)=>`<button class="rail-marker" data-index="${
 document.querySelectorAll('.section').forEach(section => section.querySelectorAll('.reveal').forEach((el,i)=>el.style.setProperty('--delay',`${Math.min(i,8)*110}ms`)));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let current = 0, locked = false, lockTimer, accumulator = 0, wheelIdleTimer, wheelGestureUsed = false;
-const steppedChapters = {opening: IntroChapter, science: ScienceChapter, technology: TechnologyChapter, product: ProductChapter, market: MarketChapter, cim: EntrepreneurshipChapter, cycle: CycleChapter, conclusion: ConclusionChapter};
+const steppedChapters = {opening: IntroChapter, science: ScienceChapter, technology: TechnologyChapter, product: ProductChapter, market: MarketChapter, cim: EntrepreneurshipChapter, conclusion: ConclusionChapter};
 const chapterAt = index => steppedChapters[sections[index]?.id];
 let chapterStep = 0;
 let touchY = null, touchX = null, touchStartTarget = null;
 const dialog = document.querySelector('#help-dialog');
 const duration = () => reducedMotion.matches ? 0 : 1050;
 function resize() {
+  document.body.scrollTop=0;document.documentElement.scrollTop=0;
   document.documentElement.style.setProperty('--vh', `${innerHeight}px`);
   deck.style.transition = 'none';
   deck.style.transform = `translate3d(0, ${-current*innerHeight}px, 0)`;
@@ -101,6 +101,7 @@ function activate(index, {initial=false, updateHash=true, chapterEntry=0}={}) {
   const oldSection=sectionEls[current];
   if(oldSection.contains(document.activeElement)) document.activeElement.blur();
   current=index;
+  document.body.scrollTop=0;document.documentElement.scrollTop=0;
   sectionEls.forEach((el,i)=>{el.classList.remove('active');el.inert=i!==index;el.setAttribute('aria-hidden',String(i!==index));});
   const active=sectionEls[index];void active.offsetWidth;active.classList.add('active');
   const chapter=chapterAt(index);
@@ -139,6 +140,7 @@ function goChapterStep(index,{updateHash=true}={}){
   const focused=document.activeElement;
   if(sectionEls[current].contains(focused)&&!focused.closest('[data-tech-jump],[data-prod-jump],[data-story-jump],[data-chapter-next]'))focused.blur();
   chapterStep=index;chapter.show(index);scrollArea().scrollTop=0;
+  document.body.scrollTop=0;document.documentElement.scrollTop=0;
   if(updateHash)history.replaceState(null,'',currentHash());
   updateChapterProgress();accumulator=0;locked=true;clearTimeout(lockTimer);
   lockTimer=setTimeout(()=>{locked=false;},reducedMotion.matches?140:chapter.lockMs);
@@ -206,6 +208,9 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog
 async function toggleFullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();}catch{document.querySelector('#announcement').textContent='Full screen is unavailable in this browser.';}}
 addEventListener('resize',resize);
 function readLocation(){
+  // Keep the previous feedback links useful after consolidating F into one chapter.
+  const legacy=location.hash.match(/^#cycle(?:-(\d+))?$/);
+  if(legacy)return {index:sections.findIndex(s=>s.id==='cim'),step:({1:0,2:1,3:4,4:3})[Number(legacy[1]||1)]??0};
   const match=location.hash.match(new RegExp(`^#(${Object.keys(steppedChapters).join('|')})(?:-(\\d+))?$`));
   if(match)return {index:sections.findIndex(s=>s.id===match[1]),step:Math.max(0,Math.min(steppedChapters[match[1]].steps.length-1,Number(match[2]||1)-1))};
   return {index:sections.findIndex(s=>`#${s.id}`===location.hash),step:0};

@@ -1,5 +1,23 @@
 # Refinement check - 15 September 2026
 
+## Final rubric pass — latest
+
+- Added concise Science and Technology findings and a Product-to-Market handoff. Kept the existing styling and 35 states. Added state-specific rehearsal cues; Market now leads with the positive purchase finding before its limits.
+- All 35 local states checked at measured 1920 × 1080 CSS pixels: exactly one active section, nonempty content, no broken active images or horizontal document overflow, and no returned browser errors. Revised chapter frames visually inspected.
+- Verified N-key Market cue, CIM decision-button navigation and forward arrow navigation. JavaScript syntax and whitespace checks passed. Browser viewport override restored after inspection.
+- Published reusable Netlify preview `review`, deploy 6aa915b0206ff1276ff0f228. Public CIM opened; all 32 assets returned 200; 30 byte-identical, two HTML files changed only through inspected clean-URL anchor rewrites.
+- Overall content alignment and remaining delivery checks are documented in FINAL_RUBRIC_REVIEW.md. No GitHub push or production update in this pass.
+
+## Persistent CIM refinement — preceding pass
+
+- F consolidated from two chapters / six states into one chapter / five states: model, Assemble, Redirect, Respond, Connect. The same SVG remains mounted; cited examples recall the preceding presentation sections.
+- The guide now assigns 15/30/30/30/15 seconds to the five states. Total speaking target remains 8:35; delivery timing has not been measured.
+- Market evidence leads with QC25's within-Bose position in the cited online panel; brand-wide dollar-share bars are secondary context.
+- Browser check: all 35 direct states resolve and load their images without reported JavaScript errors. The five decision buttons preserve the same diagram marker ID and keep the active stage at y=0. Representative 1920×1080 frames inspected. Narrow reflow checked at effective 520 CSS px without horizontal overflow; not a physical-phone test.
+- Fixed a focus-induced body scroll that displaced the translated presentation when clicking buttons. The deck is now fixed to the viewport; print restores static positioning. Inner chapter scrolling remains independent.
+- Syntax and whitespace checks passed. Existing Science, Technology and Product content remains unchanged. The checked-in runtime check was updated for the state count; this run used the in-app browser rather than that external automation script.
+- No final PowerPoint, recording, audio consistency, Safari or exhaustive accessibility validation is claimed. Earlier QA sections below describe superseded versions where counts differ.
+
 ## Current local review follow-up
 
 - Preserved the existing uncommitted refinement work and the original team contribution text. Added a prominent notice that the old script timing is superseded.

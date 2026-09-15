@@ -11,35 +11,44 @@ This is the content map for the refined website. The contribution text in `CA1_s
 | C - Technological Research | 1:25 | technology through technology-8 | Sensing/control/driver, timing, feedforward/feedback and stability. Diagram is generic engineering. |
 | D - Product Development | 1:20 | product through product-6 | Patent, TriPort and comfort/seal, size/acoustics and battery/playback trade-offs. |
 | E - Market Transition | 1:50 | market through market-4 | Specialist route, demonstration barrier, consumer offer, bounded purchase evidence. |
-| F - David: Entrepreneurship | 2:00 | cim, cim-2, cycle through cycle-4 | People, decisions and feedback connecting the four CIM areas. |
+| F - David: Entrepreneurship | 2:00 | cim through cim-5 | One persistent CIM diagram: orient, Assemble, Redirect, Respond, reconnect. |
 | A - Conclusion | 0:20 | conclusion, conclusion-2 | One finding and one practical lesson for the board. |
 
 Spoken target: **8:35**. Allow 1:25 for pauses, transitions and the final reference frame. Rehearse to confirm. Apart from David's requested F section, named A-E assignments remain with the team.
 
 ## F - The analytical centre of the presentation
 
-### Assemble - 30 seconds - cim
+### Orient - 15 seconds - cim
+- Show the full CIM diagram once; entrepreneurship stays at its centre.
+- The earlier slides established four areas. Your role is to explain the decisions connecting them.
+- Recall the customer listening problem that initiated research; no repeated origin story.
+
+### Assemble - 30 seconds - cim-2
 - Problem: the research required complementary expertise.
 - Decision: sponsorship and coordination brought acoustics and control/circuit skills together.
 - Evidence: Gauger's first-person account; private ownership is context, not a disclosed ANC funding budget.
 - Implication: leadership connected the problem with the capability to work on it.
 
-### Redirect - 35 seconds - cim-2
+### Redirect - 30 seconds - cim-3
 - Problem: a working early prototype did not make the consumer offer affordable.
 - Decision: with Bose's support, engineers explored specialist applications while development continued.
 - Connection: a commercial objection changed the development route.
 - Avoid replaying aviation history; Market has already explained it.
 - Optional IP point: patents record protection efforts, not proof of profit.
 
-### Connect and respond - 55 seconds total - cycle through cycle-4
-- **Market → Science:** listening need initiated research; social and behavioural sciences cycle.
-- **Science ↔ Technology:** acoustic understanding guides control; measurements raise further questions; natural and life sciences cycle.
-- **Technology ↔ Product:** constraints guide technical work; TriPort helps enable consumer form; integrated engineering cycle.
-- **Product ↔ Market:** customer exposure produces a response that informs a commercial decision; differentiated services cycle.
-- The named events have sources; broader feedback mappings are our retrospective CIM analysis. Bose is not claimed to have deliberately followed CIM.
-- Explain problem → decision → connection → outcome. Finish by showing entrepreneurship coordinating the exchanges.
+### Respond - 30 seconds - cim-4
+- Recall the airline exposure already explained in Market.
+- Bose reports positive passenger response encouraged direct consumer sales.
+- Show Product ↔ Market: customer experience supplied a signal; the organisation acted on it.
+- This is the differentiated services cycle in our interpretation, not a measured conversion rate.
 
-State timing: customer problem 10 seconds; science/technology 10 seconds; product requirements and TriPort 15 seconds; passenger response and final lesson 20 seconds. Three decision prompts anchor F: **Assemble / Redirect / Respond**. Do not read every label on the CIM diagram.
+### Reconnect - 15 seconds - cim-5
+- Restore the whole diagram and briefly recall Product's TriPort example.
+- Technical capability enabled the consumer form; product requirements shaped engineering (integrated engineering cycle).
+- Conclude: entrepreneurship made information from one area change decisions in another.
+- The named events have sources; the CIM mappings are retrospective analysis. Bose is not claimed to have deliberately followed the model.
+
+State timing: **15 + 30 + 30 + 30 + 15 = 120 seconds**. The same diagram remains mounted throughout. Redirect highlights spokes through entrepreneurship rather than inventing a direct Market–Technology cycle. The Science–Technology connection is supported by the complementary team; avoid inventing a specific experimental feedback event. Old cycle links redirect to the corresponding new CIM state.
 
 ## D and E: separate questions, one deliberate connection
 
@@ -62,6 +71,15 @@ State timing: customer problem 10 seconds; science/technology 10 seconds; produc
 - Conclusion: one finding (10 seconds) and one board action (10 seconds). No repeated history or spoken reference list.
 
 ## Rubric coverage
+
+### Findings and short handoffs
+- Science: cancellation is local and fit-dependent → engineering must design sensing and control around those constraints.
+- Technology: timing and stability make control usable → Product must integrate it with comfort, size and power.
+- Product: acoustic performance must be wearable → Market must help customers recognise the benefit.
+- Market: QC25 provides dated purchase evidence → Entrepreneurship explains the decisions connecting the work behind the offer.
+- Entrepreneurship: Amar Bose supported complementary expertise; marketing supplied a cost objection; engineers explored another application; Bose acted on passenger response. Explain the actor, decision and connection rather than repeating the chronology.
+
+The final Science, Technology and Product states now have specific N-key closing cues. Market's final cue leads with the positive finding, states the evidence boundary, then hands over to F. Use these within the existing time allocation.
 
 - **Innovation and commercial success, 5%:** opening explains the value/problem; Product explains usability; Market ends with dated purchase evidence. The 2015 13% is Bose brand-wide US online headphone dollar share within the panel, not global ANC share, units or profitability.
 - **CIM, 10%:** Science, Technology, Product and Market retain distinct findings. F explicitly connects them through decisions and feedback, with documented events distinguished from analysis.

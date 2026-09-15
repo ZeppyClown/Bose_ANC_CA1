@@ -10,7 +10,7 @@ Open http://127.0.0.1:8766/website/ or http://127.0.0.1:8766/website/recording.h
 
 ## Current state counts
 
-Introduction 3; Science 6; Technology 8; Product 6; Market 4; Entrepreneurship (people/decisions) 2; Entrepreneurship (feedback) 4; Conclusion 2; Sources 1. Total: 36 displayed states including Sources.
+Introduction 3; Science 6; Technology 8; Product 6; Market 4; Entrepreneurship 5; Conclusion 2; Sources 1. Total: 35 displayed states across eight sections. F uses one persistent CIM diagram: The model / Assemble / Redirect / Respond / Connect. Earlier cycle links map to the corresponding CIM step.
 
 Scroll/arrow keys advance; reverse navigation revisits; N toggles rehearsal cues; R replays the current visual; F requests fullscreen. No automatic advance. Presenter controls all holds. Use a 1920 x 1080 window for recording layout and place your portrait in the bottom-right reserved column.
 
